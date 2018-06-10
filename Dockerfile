@@ -11,17 +11,17 @@ RUN apt-get update -y
 
 RUN mkdir -p /data/db
 RUN apt-get update && apt-get install -y \
-    mongodb-org=3.6.1 \
-    mongodb-org-server=3.6.1 \
-    mongodb-org-shell=3.6.1 \
-    mongodb-org-mongos=3.6.1 \
-    mongodb-org-tools=3.6.1 \
-    sudo \
-    curl \
-    net-tools \
-    git \
-    openssh-server \
-    openssh-client 
+    mongodb-org=3.6.1 
+    #mongodb-org-server=3.6.1 \
+    #mongodb-org-shell=3.6.1 \
+    #mongodb-org-mongos=3.6.1 \
+    #mongodb-org-tools=3.6.1 \
+    #sudo \
+    #curl \
+    #net-tools \
+    #git \
+    #openssh-server \
+    #openssh-client 
     
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install -y nodejs
