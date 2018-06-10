@@ -27,6 +27,8 @@ RUN apt-get install -y nodejs
 # install git
 RUN apt-get install -y git
 
+RUN apt-get install -y screen
+
 # install sshd
 RUN apt-get install -y openssh-server openssh-client passwd
 
