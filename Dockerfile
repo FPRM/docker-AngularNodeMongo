@@ -10,11 +10,13 @@ RUN apt-get update -y
 # install MongoDB
 
 RUN mkdir -p /data/db
-RUN apt-get update && apt-get install -y \
-    mongodb-org
-    #mongodb-org-server=3.6.1 \
-    #mongodb-org-shell=3.6.1 \
-    #mongodb-org-mongos=3.6.1 \
+RUN apt-get install -y mongodb-org
+RUN apt-get install -y mongodb-org-server
+RUN apt-get install -y mongodb-org-shell
+RUN apt-get install -y mongodb-org-mongos
+    #=3.6.1 \
+    #=3.6.1 \
+    #=3.6.1 \
     #mongodb-org-tools=3.6.1 \
     #sudo \
     #curl \
