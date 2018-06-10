@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:xenial
 MAINTAINER Florian Pereme <florian.pereme@altran.com>
 
 # Update sources
