@@ -21,8 +21,7 @@ RUN apt-get update && apt-get install -y \
     net-tools \
     git \
     openssh-server \
-    openssh-client \
-    passwd 
+    openssh-client 
     
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install -y nodejs
