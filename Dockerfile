@@ -8,28 +8,22 @@ RUN apt-get update -y
 
 
 # install MongoDB
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN mkdir -p /data/db
 RUN apt-get update && apt-get install -y \
-        mongodb-org=3.6.1 \
-        mongodb-org-server=3.6.1 \
-        mongodb-org-shell=3.6.1 \
-        mongodb-org-mongos=3.6.1 \
-        mongodb-org-tools=3.6.1 \
-        sudo \
-        curl \
-        net-tools \
-        git \
-        openssh-server \
-        openssh-client \
-        
-   
-
-
-# install nodejs 8.9.4 (dernière stable en 8.x)
-
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
-RUN apt-get install -y nodejs
-
+    mongodb-org=3.6.1 \
+    mongodb-org-server=3.6.1 \
+    mongodb-org-shell=3.6.1 \
+    mongodb-org-mongos=3.6.1 \
+    mongodb-org-tools=3.6.1 \
+    sudo \
+    curl \
+    net-tools \
+    git \
+    openssh-server \
+    openssh-client \
+    passwd \
+    nodejs
 
 
 # install sshd
