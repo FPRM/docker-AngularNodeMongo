@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:16.04
 MAINTAINER Florian Pereme <florian.pereme@altran.com>
 
 # Update sources
@@ -10,26 +10,25 @@ RUN apt-get update -y
 # install MongoDB
 
 RUN mkdir -p /data/db
-RUN apt-get install -y mongodb-org
-RUN apt-get install -y mongodb-org-server
-RUN apt-get install -y mongodb-org-shell
-RUN apt-get install -y mongodb-org-mongos
-    #=3.6.1 \
-    #=3.6.1 \
-    #=3.6.1 \
-    #mongodb-org-tools=3.6.1 \
-    #sudo \
-    #curl \
-    #net-tools \
-    #git \
-    #openssh-server \
-    #openssh-client 
+RUN apt-get install -y mongodb mongodb-server mongodb-clients
+RUN apt-get install -y curl
     
+#install sudo
+RUN apt-get install -y sudo
+
+#install net-tools (netstat/ifconfig etc)
+RUN apt-get install -y net-tools
+
+# install nodejs 8.9.4 (dernière stable en 8.x)
+
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install -y nodejs
 
+# install git
+RUN apt-get install -y git
 
 # install sshd
+RUN apt-get install -y openssh-server openssh-client passwd
 
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
