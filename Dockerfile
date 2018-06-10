@@ -9,19 +9,19 @@ RUN apt-get update -y
 
 # install MongoDB
 RUN mkdir -p /data/db
-RUN apt-get install -y mongodb mongodb-server mongodb-clients
-
-# install php
-RUN apt-get install -y php7.0 php7.0-mysql libapache2-mod-php7.0 
-
-#Install curl
-RUN apt-get install -y curl
-
-#install sudo
-RUN apt-get install -y sudo
-
-#install net-tools (netstat/ifconfig etc)
-RUN apt-get install -y net-tools
+sudo apt-get install -y \
+mongodb-org=3.6.1 \
+mongodb-org-server=3.6.1 \
+mongodb-org-shell=3.6.1 \
+mongodb-org-mongos=3.6.1 \
+mongodb-org-tools=3.6.1 \
+sudo \
+curl \
+net-tools \
+git \
+openssh-server \
+openssh-client \
+passwd
 
 
 # install nodejs 8.9.4 (dernière stable en 8.x)
@@ -29,27 +29,29 @@ RUN apt-get install -y net-tools
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN apt-get install -y nodejs
 
-# install git
-RUN apt-get install -y git
+
 
 # install sshd
-RUN apt-get install -y openssh-server openssh-client passwd
+
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
-RUN echo 'root:root' | chpasswd
+RUN echo 'root:medica' | chpasswd
 
 # Put your own public key at id_rsa.pub for key-based login.
-RUN mkdir -p /root/.ssh && touch /root/.ssh/known_hosts && chmod 700 /root/.ssh
-ADD known_hosts /root/.ssh/known_hosts
+#RUN mkdir -p /root/.ssh && touch /root/.ssh/known_hosts && chmod 700 /root/.ssh
+#ADD known_hosts /root/.ssh/known_hosts
 
 #Divers
-ADD script.sh /root/
-ADD key_rsa /root/
-ADD version.txt /root/
-ADD vhost_backend.conf /etc/apache2/sites-available/
-ADD .bashrc /root/
-EXPOSE 22 80 8080 8082 3306
+#ADD script.sh /root/
+#ADD key_rsa /root/
+#ADD version.txt /root/
+#ADD vhost_backend.conf /etc/apache2/sites-available/
+#ADD .bashrc /root/
+EXPOSE 22 
+EXPOSE 80 
+EXPOSE 8080-8090 
+EXPOSE 3306
 
 #pour démarer les services et concerver le containeur ouvert
 CMD service mongodb start && /usr/sbin/sshd -D
