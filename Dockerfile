@@ -11,7 +11,7 @@ RUN apt-get update -y
 
 RUN mkdir -p /data/db
 RUN apt-get update && apt-get install -y \
-    mongodb-org=3.6.1 
+    mongodb-org
     #mongodb-org-server=3.6.1 \
     #mongodb-org-shell=3.6.1 \
     #mongodb-org-mongos=3.6.1 \
