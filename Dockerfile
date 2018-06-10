@@ -8,7 +8,7 @@ RUN apt-get update -y
 
 
 # install MongoDB
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+
 RUN mkdir -p /data/db
 RUN apt-get update && apt-get install -y \
     mongodb-org=3.6.1 \
@@ -23,7 +23,9 @@ RUN apt-get update && apt-get install -y \
     openssh-server \
     openssh-client \
     passwd \
-    nodejs
+    
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+RUN apt-get install -y nodejs
 
 
 # install sshd
