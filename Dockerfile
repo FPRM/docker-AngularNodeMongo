@@ -53,7 +53,8 @@ RUN echo 'root:medica' | chpasswd
 EXPOSE 22 
 EXPOSE 80 
 EXPOSE 8080-8090 
-EXPOSE 3306
+EXPOSE 27017
+EXPOSE 28017
 
 #pour démarer les services et concerver le containeur ouvert
 CMD mongod && /usr/sbin/sshd -D
