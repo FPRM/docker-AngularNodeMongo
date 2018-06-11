@@ -42,8 +42,8 @@ RUN sudo apt-get install -y nodejs
 RUN wget https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/3.6/multiverse/binary-amd64/mongodb-org-mongos_3.6.1_amd64.deb
 #RUN apt-get update && apt-get install -y mongodb-org
 #RUN sudo apt-get install -y mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
-RUN mkdir -p /data/db
-RUN chown -R mongodb:mongodb /data/db
+#RUN mkdir -p /data/db
+#RUN chown -R mongodb:mongodb /data/db
 
 #Install openssh server
 RUN mkdir -p /var/run/sshd
