@@ -16,32 +16,29 @@ EXPOSE 80 443 3000 35729 8080 8082 22
 
 # Install Utilities
 RUN apt-get update -y
- && apt-get install -y \
- curl \
- git \
- ssh \
- gcc \
- make \
- build-essential \
- libkrb5-dev \
- sudo \
- apt-utils \
- sudo \
- net-tools \
- screen \
- openssh-server \
- openssh-client \
- passwd \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get install -y curl
+RUN apt-get install -y git
+RUN apt-get install -y ssh
+RUN apt-get install -y sudo
+RUN apt-get install -y sudo
+RUN apt-get install -y net-tools
+RUN apt-get install -y screen
+RUN apt-get install -y openssh-server
+RUN apt-get install -y openssh-client
+RUN apt-get install -y passwd
+RUN apt-get install -y curl
+RUN apt-get install -y curl
+RUN apt-get install -y curl
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
-RUN sudo apt-get install -yq nodejs \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN sudo apt-get install -y nodejs
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+RUN echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu/ xenial/mongodb-org/3.4 multiverse" |  tee /etc/apt/sources.list.d/mongodb-3.4.list
 
-
+RUN apt-get update && apt-get install -y mongodb-org
+RUN mkdir -p /data/db
+RUN chown -R mongodb:mongodb /data/db
 
 #Install openssh server
 RUN mkdir -p /var/run/sshd
@@ -49,7 +46,7 @@ RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN echo 'root:medica' | chpasswd
 
-
+EXPOSE 27017 80 8080 8082 22
 
 
 CMD mongod && /usr/sbin/sshd -D
