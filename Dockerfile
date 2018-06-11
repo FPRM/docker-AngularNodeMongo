@@ -9,8 +9,11 @@ RUN apt-get update -y
 
 # install MongoDB
 
+
+RUN apt-get install -y mongodb-org
+RUN apt-get install -y mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
 RUN mkdir -p /data/db
-RUN apt-get install -y mongodb mongodb-server mongodb-clients
+
 RUN apt-get install -y curl
     
 #install sudo
@@ -53,4 +56,4 @@ EXPOSE 8080-8090
 EXPOSE 3306
 
 #pour démarer les services et concerver le containeur ouvert
-CMD service mongodb start && /usr/sbin/sshd -D
+CMD mongod && /usr/sbin/sshd -D
