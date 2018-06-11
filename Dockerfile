@@ -4,12 +4,7 @@ MAINTAINER Florian Pereme <florian.pereme@altran.com>
 # Update sources
 RUN apt-get update -y
 RUN apt-get install -y wget
-
-# install mongods 3.6
-RUN wget https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/3.6/multiverse/binary-amd64/mongodb-org-server_3.6.1_amd64.deb
-RUN dpkg -i mongodb-org-server_3.6.1_amd64.deb
-RUN mkdir -p /data/db
-
+#need to install mongo
 
 RUN apt-get install -y curl
     
