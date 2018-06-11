@@ -26,15 +26,14 @@ RUN apt-get install -y screen
 RUN apt-get install -y openssh-server
 RUN apt-get install -y openssh-client
 RUN apt-get install -y passwd
-RUN apt-get install -y curl
-RUN apt-get install -y curl
-RUN apt-get install -y curl
+RUN apt-get install -y libglib2.0-dev
+
 
 # Install nodejs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN sudo apt-get install -y nodejs
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-RUN echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu/ xenial/mongodb-org/3.5 multiverse" |  tee /etc/apt/sources.list.d/mongodb-3.6.list
+RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
 RUN apt-get update && apt-get install -y mongodb-org
 RUN mkdir -p /data/db
