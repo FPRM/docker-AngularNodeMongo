@@ -4,6 +4,7 @@ MAINTAINER Florian Pereme <florian.pereme@altran.com>
 # Update sources
 RUN apt-get update -y
 RUN apt-get install -y wget
+RUN apt-get install -y sudo
 #need to install mongo
 
 RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
