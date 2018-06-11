@@ -15,8 +15,8 @@ EXPOSE 80 443 3000 35729 8080 8082 22
 
 
 # Install Utilities
-RUN apt-get update -q  \
- && apt-get install -yqq \
+RUN apt-get update -y
+ && apt-get install -y \
  curl \
  git \
  ssh \
