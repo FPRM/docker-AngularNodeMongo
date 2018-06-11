@@ -31,7 +31,7 @@ RUN apt-get update -y
  screen \
  openssh-server \
  openssh-client \
- passwd\
+ passwd \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
