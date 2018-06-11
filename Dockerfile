@@ -35,13 +35,11 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
 RUN sudo apt-get install -y nodejs
 
 
-#RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 #RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
 
-RUN wget https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/3.6/multiverse/binary-amd64/mongodb-org-mongos_3.6.1_amd64.deb -O ~/mongodb-org-mongos_3.6.1_amd64.deb
-RUN dpkg -i ~/mongodb-org-mongos_3.6.1_amd64.deb
-#RUN apt-get update && apt-get install -y mongodb-org
+RUN apt-get update && apt-get install -y mongodb-org mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
 #RUN sudo apt-get install -y mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
 #RUN mkdir -p /data/db
 #RUN chown -R mongodb:mongodb /data/db
