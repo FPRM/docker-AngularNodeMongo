@@ -1,17 +1,9 @@
-# Build:
-# docker build -t meanjs/mean .
-#
-# Run:
-# docker run -it meanjs/mean
-#
-# Compose:
-# docker-compose up -d
+
 
 FROM ubuntu:16.04
 MAINTAINER Florian Pereme <florian.pereme@altran.com>
 
-# 80 = HTTP, 443 = HTTPS, 3000 = MEAN.JS server, 35729 = livereload, 8080 = node-inspector
-EXPOSE 80 443 3000 35729 8080 8082 22
+
 
 
 # Install Utilities
@@ -41,7 +33,7 @@ RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mo
 
 
 RUN apt-get update && apt-get install -y --allow-unauthenticated mongodb-org mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
-#RUN sudo apt-get install --force -y mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
+RUN apt-get install --force -y --allow-unauthenticated mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
 #RUN mkdir -p /data/db
 #RUN chown -R mongodb:mongodb /data/db
 
