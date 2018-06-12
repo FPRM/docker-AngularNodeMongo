@@ -40,7 +40,7 @@ RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mo
 #RUN echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
 
-RUN apt-get update && apt-get install -y mongodb-org mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
+RUN apt-get update && apt-get install -y --allow-unauthenticated mongodb-org mongodb-org-server mongodb-org-shell mongodb-org-mongos mongodb-org-tools
 #RUN sudo apt-get install --force -y mongodb-org=3.6.1 mongodb-org-server=3.6.1 mongodb-org-shell=3.6.1 mongodb-org-mongos=3.6.1 mongodb-org-tools=3.6.1
 #RUN mkdir -p /data/db
 #RUN chown -R mongodb:mongodb /data/db
