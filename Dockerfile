@@ -46,5 +46,5 @@ RUN echo 'root:medica' | chpasswd
 EXPOSE 27017 80 8080 8082 22
 
 
-CMD mongod && /usr/sbin/sshd -D
+CMD /usr/sbin/sshd -D
 
