@@ -37,6 +37,11 @@ RUN apt-get install -y --force-yes mongodb-org=3.6.1 mongodb-org-server=3.6.1 mo
 #RUN mkdir -p /data/db
 #RUN chown -R mongodb:mongodb /data/db
 
+#Configure Mongo file system
+RUN mkdir -p /data/db
+RUN chown -R mongodb:mongodb /data
+
+
 #Install openssh server
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
